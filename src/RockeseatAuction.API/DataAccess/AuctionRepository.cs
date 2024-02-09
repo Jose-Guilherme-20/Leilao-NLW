@@ -25,8 +25,7 @@ namespace RockeseatAuction.API.DataAccess
             return _dbContext
             .Auctions
             .Include(x => x.Items)
-            .AsNoTracking()
-            .FirstOrDefault(x => today >= x.Starts && today <= x.Ends);
+            .FirstOrDefault();
         }
     }
 }

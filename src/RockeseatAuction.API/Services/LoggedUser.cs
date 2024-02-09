@@ -1,3 +1,4 @@
+using RockeseatAuction.API.Contracts;
 using RockeseatAuction.API.Entities;
 using RockeseatAuction.API.Repositories;
 
@@ -6,21 +7,22 @@ namespace RockeseatAuction.API.Services
     public class LoggedUser
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public LoggedUser(IHttpContextAccessor httpContext)
+        private readonly IUserRepository _userRepository;
+        public LoggedUser(IHttpContextAccessor httpContext, IUserRepository userRepository)
         {
             _httpContextAccessor = httpContext;
+            _userRepository = userRepository;
         }
-        public User User()
+        public User? User()
         {
-            var repository = new AppDbContext();
             var token = TokenOnRequest();
             var email = FromBase64String(token);
 
-            return repository.Users.First(user => user.Equals(email));
+            return _userRepository.GetUserByEmail(email);
         }
         private string TokenOnRequest()
         {
-            var authentication = _httpContextAccessor.HttpContext.Request.Headers.Authorization.ToString();
+            var authentication = _httpContextAccessor?.HttpContext?.Request.Headers.Authorization.ToString();
             if (string.IsNullOrEmpty(authentication))
             {
                 throw new Exception("Token is missing");

@@ -1,9 +1,12 @@
 using System.Security.Cryptography.Xml;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RockeseatAuction.API.Contracts;
 using RockeseatAuction.API.DataAccess;
 using RockeseatAuction.API.Filters;
+using RockeseatAuction.API.Repositories;
 using RockeseatAuction.API.Services;
+using RockeseatAuction.API.UseCases.Auctions.GetCurrent;
 using RockeseatAuction.API.UseCases.Auctions.Offers.CreateOffer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,7 +50,16 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddScoped<AuthenticationUserAttribute>();
 builder.Services.AddScoped<LoggedUser>();
 builder.Services.AddScoped<CreateOfferUseCase>();
+builder.Services.AddScoped<GetCurrentAuctionUseCase>();
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
+builder.Services.AddScoped<IOfferRepository, OfferRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    var dataBase = builder.Configuration.GetConnectionString("ConnectionDefault");
+    options.UseSqlite(dataBase);
+});
 
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();

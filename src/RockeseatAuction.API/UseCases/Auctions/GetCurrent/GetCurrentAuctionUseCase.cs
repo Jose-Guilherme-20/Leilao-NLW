@@ -12,9 +12,9 @@ namespace RockeseatAuction.API.UseCases.Auctions.GetCurrent
             _auctionRepository = auctionRepository;
         }
 
-        public Auction GetAuction()
+        public Auction? GetAuction()
         {
-            return new Auction();
+            return _auctionRepository.GetCurrent();
         }
     }
 }

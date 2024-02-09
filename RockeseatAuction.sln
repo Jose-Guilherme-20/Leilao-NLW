@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{910CE02B-34A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockeseatAuction.API", "src\RockeseatAuction.API\RockeseatAuction.API.csproj", "{A41ACDFC-2C60-48B2-9480-ABD17FCDA813}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{AEA9BC98-5754-4C95-BC66-E2D559E7D060}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{A41ACDFC-2C60-48B2-9480-ABD17FCDA813}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41ACDFC-2C60-48B2-9480-ABD17FCDA813}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41ACDFC-2C60-48B2-9480-ABD17FCDA813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA9BC98-5754-4C95-BC66-E2D559E7D060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA9BC98-5754-4C95-BC66-E2D559E7D060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA9BC98-5754-4C95-BC66-E2D559E7D060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA9BC98-5754-4C95-BC66-E2D559E7D060}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A41ACDFC-2C60-48B2-9480-ABD17FCDA813} = {910CE02B-34A8-4781-A4A1-25300E774ECD}
